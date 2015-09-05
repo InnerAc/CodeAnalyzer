@@ -22,7 +22,7 @@ analyzer.train('../data/features.jpg')
 for i in range(1):
     rand = random.random()
     url = "http://202.119.113.135/validateCodeAction.do?random=" + str(rand);
-    #print url
+    print url
     file_path = "../train/crawler.jpg"
     getImage(url,file_path)
 
