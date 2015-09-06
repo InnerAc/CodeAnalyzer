@@ -38,7 +38,6 @@ def getCheckCode(url,analyzer):
         localPic = open(path, "wb")
         localPic.write(picData)
         localPic.close() 
-        print "保存验证码图片在%s，开始解析验证码..."%path  
         result = analyzer.analyze('../tmp/vcode.jpg')
         if result == None:
             print "解析失败..."
@@ -89,14 +88,14 @@ def getHtml(url):
     return html
 
 def getSource(uid,pwd):
-    print "初始化分类器..."
+    # print "初始化分类器..."
     segmenter = NormalSegmenter()
     extractor = SimpleFeatureExtractor( feature_size=20, stretch=False )
 
     analyzer = KNNAnalyzer( segmenter, extractor)
     analyzer.train('../data/features.jpg')
 
-    print "开始模拟登录..."
+    # print "开始模拟登录..."
     login_url = "http://202.119.113.135/loginAction.do"
     vcode_url = 'http://202.119.113.135/validateCodeAction.do?random=0.2583906068466604'
     all_url = "http://202.119.113.135/gradeLnAllAction.do?type=ln&oper=sxinfo&lnsxdm=001"
